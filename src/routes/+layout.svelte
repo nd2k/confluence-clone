@@ -1,10 +1,13 @@
 <script lang="ts">
     import '../styles/main.css';
+    import { fade } from 'svelte/transition';
     import Button from '$lib/components/Button.svelte';
     import Menu from '@svicons/boxicons-regular/menu.svelte';
     import Sidenav from '$lib/Sidenav.svelte';
+    import MainContent from '$lib/MainContent.svelte';
 
     let isMainMenuOpened: boolean = false;
+    let isMainContentOpened: boolean = false;
 
     const toggleMenu = () => {
         isMainMenuOpened = !isMainMenuOpened;
@@ -16,6 +19,10 @@
 
     const closeMenu = () => {
         isMainMenuOpened = false;
+    }
+
+    const activeMainContent = () => {       
+        isMainContentOpened = !isMainContentOpened;
     }
 </script>
 
@@ -38,13 +45,15 @@
         </div>
 
         {#if isMainMenuOpened}
-            <div class="sidenav">
-                <Sidenav />
+            <div class="sidenav" transition:fade={{ duration: 500 }}>
+                <Sidenav on:active-main-content={activeMainContent}/>
             </div> 
         {/if}
         
         <div id="main-content" on:mouseenter={closeMenu}>
-            <slot />
+            <MainContent isActive={isMainContentOpened}>
+                <slot />
+            </MainContent>
         </div>
     </div>
 </div>
@@ -59,9 +68,9 @@
         padding: 0.5rem;
     }
     #main-btn {
-        padding-top: 0.5rem;
-        padding-left: 0.8rem;
-        position: absolute;
+        top: 0.8rem;
+        left: 1.3rem;
+        position: fixed;
         z-index: 100;
     }
 </style>

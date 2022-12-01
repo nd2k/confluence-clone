@@ -25,7 +25,7 @@
     const dispatch = createEventDispatcher();	
 
 	function emitEvent() {
-		dispatch(eventName)
+		dispatch(eventName);
 	}
 </script>
 
