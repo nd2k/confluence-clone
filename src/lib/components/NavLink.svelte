@@ -50,7 +50,7 @@
         left: 0;
         height: 100%;
         width: 100%;
-        border-bottom-right-radius: 20px;
+        border-bottom-right-radius: 30px;
     }
     li b:nth-child(2) {
         position: absolute;
@@ -68,7 +68,7 @@
         left: 0;
         height: 100%;
         width: 100%;
-        border-top-right-radius: 20px;
+        border-top-right-radius: 30px;
     }
     li.active {
         background-color: var(--white-color);

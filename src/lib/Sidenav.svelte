@@ -7,7 +7,7 @@
 
     let sidenav: HTMLElement;
     let navLinks: NodeListOf<HTMLElement>;
-    let active: boolean = false;
+    let isActive: boolean = false;
 
     onMount(() => {
         navLinks = sidenav.querySelectorAll('.list');
@@ -40,7 +40,7 @@
     }
 </script>
 
-<div class="navigation" bind:this={sidenav} class:active>
+<div class="navigation" bind:this={sidenav} class:active={isActive}>
     <ul>
         <NavLink 
             on:nav-link-hoover={(e) => {
